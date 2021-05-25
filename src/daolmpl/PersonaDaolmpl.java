@@ -25,7 +25,7 @@ public class PersonaDaolmpl implements PersonaDao {
 		Boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(insert);
-			statement.setInt(0, persona.getDni());
+			statement.setString(0, persona.getDni());
 			statement.setString(1, persona.getNombre());
 			statement.setString(2, persona.getApellido());
 			if(statement.executeUpdate() > 0) {
@@ -57,7 +57,7 @@ public class PersonaDaolmpl implements PersonaDao {
 		boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(delete);
-			statement.setInt(0, persona.getDni());
+			statement.setString(0, persona.getDni());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
 				Exito = true;
@@ -103,7 +103,7 @@ public class PersonaDaolmpl implements PersonaDao {
 	
 	private Persona getPersona(ResultSet resultSet) throws SQLException
 	{
-		int dni = resultSet.getInt("Dni");
+		String dni = resultSet.getString("Dni");
 		String nombre = resultSet.getString("Nombre");
 		String tel = resultSet.getString("Telefono");
 		return new Persona(dni, nombre, tel);
@@ -117,10 +117,10 @@ public class PersonaDaolmpl implements PersonaDao {
 		boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(modify);
-			statement.setInt(0, personaModif.getDni());
+			statement.setString(0, personaModif.getDni());
 			statement.setString(1, personaModif.getNombre());
 			statement.setString(2, personaModif.getApellido());
-			statement.setInt(3, persona.getDni());
+			statement.setString(3, persona.getDni());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
 				Exito = true;

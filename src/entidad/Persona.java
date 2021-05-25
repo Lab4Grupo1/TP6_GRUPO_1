@@ -2,7 +2,7 @@ package entidad;
 
 public class Persona {
 	//**Propiedades**//
-	private int Dni;
+	private String Dni;
 	private String Nombre;
 	private String Apellido;
 	
@@ -10,7 +10,7 @@ public class Persona {
 		
 	}
 	
-	public Persona(int dni, String nom, String ape) {
+	public Persona(String dni, String nom, String ape) {
 		Dni = dni;
 		Nombre = nom;
 		Apellido = ape;
@@ -19,10 +19,10 @@ public class Persona {
 	//****Metodos***//
 	
 	//Get y Set
-	public int getDni() {
+	public String getDni() {
 		return Dni;
 	}
-	public void setDni(int dni) {
+	public void setDni(String dni) {
 		this.Dni = dni;
 	}
 	public String getNombre() {
