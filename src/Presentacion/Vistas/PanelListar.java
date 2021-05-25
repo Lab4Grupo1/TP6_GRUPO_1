@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableModel;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
 
 public class PanelListar extends JPanel {
 	private JTable tabPersona;
@@ -41,7 +42,7 @@ public class PanelListar extends JPanel {
 		
 		int numCols = tabPersona.getModel().getColumnCount();
 		
-		PersonaNegocio negocio = null;
+		PersonaNegocioImpl negocio = new PersonaNegocioImpl();
 		List<Persona> listaPersona = negocio.readAll();
 		for (Persona persona : listaPersona) {
 			
