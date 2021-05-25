@@ -1,11 +1,18 @@
 package Presentacion.Vistas;
 
-import java.awt.Color;
+import java.util.List;
 
-import javax.swing.JLabel;
+import javax.swing.DefaultListModel;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import entidad.Persona;
+import negocio.PersonaNegocio;
 
 public class PanelListar extends JPanel {
+	private JTable tabPersona;
+	private DefaultListModel<Persona> dlModel;
 
 	/**
 	 * Create the panel.
@@ -17,10 +24,36 @@ public class PanelListar extends JPanel {
 		panel.setBounds(10, 11, 450, 250);
 		add(panel);
 		panel.setLayout(null);
+		tabPersona = new JTable();
+		tabPersona.setBounds(10, 11, 418, 228);
+		panel.add(tabPersona);
 		
-		JLabel lblNombre = new JLabel("listar");
-		lblNombre.setBounds(92, 62, 70, 40);
-		panel.add(lblNombre);
+		DefaultTableModel modelo = new DefaultTableModel();
+					
+		tabPersona.setModel(new DefaultTableModel(
+				new Object[][] {
+					
+				},new String[] {
+						"Nombre","Apellido","Dni"
+				}
+						
+				));
+		
+		int numCols = tabPersona.getModel().getColumnCount();
+		
+		PersonaNegocio negocio = null;
+		List<Persona> listaPersona = negocio.readAll();
+		for (Persona persona : listaPersona) {
+			
+		Object [] fila = new Object[numCols]; 
+		 
+		 fila[0] = persona.getNombre();
+		 fila[1] = persona.getApellido();
+		 fila[2] = persona.getDni();
+		}
+		
 	}
+	
+	
 
 }
