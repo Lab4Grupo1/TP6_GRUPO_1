@@ -2,37 +2,44 @@ package entidad;
 
 public class Persona {
 	//**Propiedades**//
-	private String dni;
-	private String	nombre;
-	private String apellido;
-	private boolean estado;
+	private int Dni;
+	private String Nombre;
+	private String Apellido;
+	
+	public Persona() {
+		
+	}
+	
+	public Persona(int dni, String nom, String ape) {
+		Dni = dni;
+		Nombre = nom;
+		Apellido = ape;
+	}
 	
 	//****Metodos***//
 	
 	//Get y Set
-	public String getDni() {
-		return dni;
+	public int getDni() {
+		return Dni;
 	}
-	public void setDni(String dni) {
-		this.dni = dni;
+	public void setDni(int dni) {
+		this.Dni = dni;
 	}
 	public String getNombre() {
-		return nombre;
+		return Nombre;
 	}
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.Nombre = nombre;
 	}
 	public String getApellido() {
-		return apellido;
+		return Apellido;
 	}
 	public void setApellido(String apellido) {
-		this.apellido = apellido;
+		this.Apellido = apellido;
 	}
-	public boolean isEstado() {
-		return estado;
-	}
-	public void setEstado(boolean estado) {
-		this.estado = estado;
+	@Override
+	public String toString() {
+		return "Dni: " + Dni + ", Nombre: " + Nombre + ", Apellido=" + Apellido;
 	}
 	
 	
