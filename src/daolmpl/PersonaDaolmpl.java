@@ -19,15 +19,14 @@ public class PersonaDaolmpl implements PersonaDao {
 	
 	@Override
 	public boolean insert(Persona persona) {
-		// TODO Auto-generated method stub
 		PreparedStatement statement;
 		Connection conn = Conexion.getConexion().getSQLConexion();
 		Boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(insert);
-			statement.setString(0, persona.getDni());
-			statement.setString(1, persona.getNombre());
-			statement.setString(2, persona.getApellido());
+			statement.setString(1, persona.getDni());
+			statement.setString(2, persona.getNombre());
+			statement.setString(3, persona.getApellido());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
 				Exito = true;
@@ -57,7 +56,7 @@ public class PersonaDaolmpl implements PersonaDao {
 		boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(delete);
-			statement.setString(0, persona.getDni());
+			statement.setString(1, persona.getDni());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
 				Exito = true;
@@ -105,8 +104,8 @@ public class PersonaDaolmpl implements PersonaDao {
 	{
 		String dni = resultSet.getString("Dni");
 		String nombre = resultSet.getString("Nombre");
-		String tel = resultSet.getString("Telefono");
-		return new Persona(dni, nombre, tel);
+		String apellido = resultSet.getString("Apellido");
+		return new Persona(dni, nombre, apellido);
 	}
 
 	@Override
@@ -117,10 +116,10 @@ public class PersonaDaolmpl implements PersonaDao {
 		boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(modify);
-			statement.setString(0, personaModif.getDni());
-			statement.setString(1, personaModif.getNombre());
-			statement.setString(2, personaModif.getApellido());
-			statement.setString(3, persona.getDni());
+			statement.setString(1, personaModif.getDni());
+			statement.setString(2, personaModif.getNombre());
+			statement.setString(3, personaModif.getApellido());
+			statement.setString(4, persona.getDni());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
 				Exito = true;

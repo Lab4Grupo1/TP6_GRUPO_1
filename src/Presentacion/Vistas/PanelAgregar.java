@@ -3,6 +3,7 @@ package Presentacion.Vistas;
 import java.awt.Color;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.JTextField;
@@ -55,5 +56,41 @@ public class PanelAgregar extends JPanel {
 		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(129, 196, 89, 23);
 		panel.add(btnAceptar);
+	}
+	
+	public void mostrarMensaje(String Mensaje) {
+		JOptionPane.showMessageDialog(null, Mensaje);
+	}
+
+	public JTextField getTxtNombre() {
+		return txtNombre;
+	}
+
+	public void setTxtNombre(JTextField txtNombre) {
+		this.txtNombre = txtNombre;
+	}
+
+	public JTextField getTxtApellido() {
+		return txtApellido;
+	}
+
+	public void setTxtApellido(JTextField txtApellido) {
+		this.txtApellido = txtApellido;
+	}
+
+	public JTextField getTxtDni() {
+		return txtDni;
+	}
+
+	public void setTxtDni(JTextField txtDni) {
+		this.txtDni = txtDni;
+	}
+
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
 	}
 }
