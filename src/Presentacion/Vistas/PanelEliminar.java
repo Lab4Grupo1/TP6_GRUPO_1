@@ -23,11 +23,11 @@ public class PanelEliminar extends JPanel {
 		panel.setLayout(null);
 		
 		JList listPersona = new JList();
-		listPersona.setBounds(83, 11, 284, 185);
+		listPersona.setBounds(83, 11, 284, 167);
 		panel.add(listPersona);
 		
 		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.setBounds(181, 216, 89, 23);
+		btnEliminar.setBounds(183, 189, 89, 23);
 		panel.add(btnEliminar);
 	}
 }

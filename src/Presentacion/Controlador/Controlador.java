@@ -33,11 +33,17 @@ public class Controlador {
 		this.ventanaPrincipal.getMntmBorrar().addActionListener(a->EventoClickMenu_AbrirPanel_BorrarPersonas(a));
 		this.ventanaPrincipal.getMntmModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersonas(a));
 		this.ventanaPrincipal.getMntmListar().addActionListener(a->EventoClickMenu_AbrirPanel_ListarPersonas(a));
+		
+//		this.pnlIngresoPersonas
+	}
+	
+	public void inicializar() {
+		this.ventanaPrincipal.setVisible(true);;
 	}
 
 	private void EventoClickMenu_AbrirPanel_ListarPersonas(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
-		ventanaPrincipal.getContentPane().add(pnlIngresoPersonas);
+		ventanaPrincipal.getContentPane().add(pnListarPersonas);
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
@@ -58,7 +64,7 @@ public class Controlador {
 
 	private void EventoClickMenu_AbrirPanel_AgregarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
-		ventanaPrincipal.getContentPane().add(pnListarPersonas);
+		ventanaPrincipal.getContentPane().add(pnlIngresoPersonas);
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}

@@ -12,7 +12,7 @@ public class Principal extends JFrame {
 		VentanaPrincipal principal = new VentanaPrincipal();
 		PersonaNegocio negocio = null;
 		Controlador controlador = new Controlador(principal, negocio);
-		
+		controlador.inicializar();
 	}
 
 }

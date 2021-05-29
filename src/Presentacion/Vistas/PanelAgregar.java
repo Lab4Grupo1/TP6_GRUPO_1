@@ -12,6 +12,7 @@ public class PanelAgregar extends JPanel {
 	private JTextField txtNombre;
 	private JTextField txtApellido;
 	private JTextField txtDni;
+	private JButton btnAceptar;
 
 	/**
 	 * Create the panel.
@@ -51,7 +52,7 @@ public class PanelAgregar extends JPanel {
 		panel.add(txtDni);
 		txtDni.setColumns(10);
 		
-		JButton btnAceptar = new JButton("Aceptar");
+		btnAceptar = new JButton("Aceptar");
 		btnAceptar.setBounds(129, 196, 89, 23);
 		panel.add(btnAceptar);
 	}

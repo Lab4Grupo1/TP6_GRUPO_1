@@ -26,7 +26,7 @@ public class PanelListar extends JPanel {
 		add(panel);
 		panel.setLayout(null);
 		tabPersona = new JTable();
-		tabPersona.setBounds(10, 11, 418, 228);
+		tabPersona.setBounds(20, 25, 403, 179);
 		panel.add(tabPersona);
 		
 		DefaultTableModel modelo = new DefaultTableModel();

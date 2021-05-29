@@ -20,12 +20,10 @@ public class VentanaPrincipal extends JFrame {
 	private JMenuItem mntmBorrar;
 	private JMenuItem mntmListar;
 	private JMenuItem mntmModificar;
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
 
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 500, 450);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -44,10 +42,6 @@ public class VentanaPrincipal extends JFrame {
 		
 		mntmModificar = new JMenuItem("Modificar");
 		mnPersonas.add(mntmModificar);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
 	}
 	public JMenu getMnPersonas() {
 		return mnPersonas;
@@ -88,15 +82,5 @@ public class VentanaPrincipal extends JFrame {
 	public void setMntmModificar(JMenuItem mntmModificar) {
 		this.mntmModificar = mntmModificar;
 	}
-
-	public JPanel getContentPane() {
-		return contentPane;
-	}
-
-	public void setContentPane(JPanel contentPane) {
-		this.contentPane = contentPane;
-	}
-	
-	
 
 }
