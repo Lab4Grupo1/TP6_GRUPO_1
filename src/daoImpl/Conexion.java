@@ -9,12 +9,17 @@ public class Conexion
 	public static Conexion instancia;
 	private Connection connection;
 	
-	private Conexion()
+	private Conexion(String user, String password)
 	{
 		try
-		{
-			//Class.forName("com.mysql.jdbc.Driver"); // quitar si no es necesario
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bdpersonas","root","root");
+		{			
+			String db = "bdPersonas";
+			String host = "localhost";
+			int port = 3306;		
+
+			String url = String.format("jdbc:mysql://%s:%d/%s?useSSL=false", host, port, db);
+
+			this.connection = DriverManager.getConnection(url, user, password);
 			this.connection.setAutoCommit(false);
 		}
 		catch(Exception e)
@@ -28,7 +33,7 @@ public class Conexion
 	{								
 		if(instancia == null)
 		{
-			instancia = new Conexion();
+			instancia = new Conexion("root","root");
 		}
 		return instancia;
 	}

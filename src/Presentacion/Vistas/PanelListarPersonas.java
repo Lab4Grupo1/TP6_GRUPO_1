@@ -12,9 +12,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 public class PanelListarPersonas extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	
 	private DefaultTableModel modelo;
 	private JTable table;
-	private String[] nombreColumnas = {"Nombre y apellido","Telefono"};
+	private String[] nombreColumnas = {"Nombre" ,"Apellido","Dni"};
 
 
 
@@ -47,11 +50,7 @@ public class PanelListarPersonas extends JPanel {
 	}
 	
 	public void setDefaultListModel(List<Persona> listModelRecibido)
-	{
-		this.getModelo().setRowCount(0); //Para vaciar la tabla
-		this.getModelo().setColumnCount(0);
-		this.getModelo().setColumnIdentifiers(this.getNombreColumnas());
-		
+	{		
 		int numCols = table.getModel().getColumnCount();
 		
 		for (Persona item : listModelRecibido) {
@@ -64,9 +63,6 @@ public class PanelListarPersonas extends JPanel {
 		 
 		 ((DefaultTableModel) table.getModel()).addRow(fila);
 		}
-
-
-
 	}
 	
 	public DefaultTableModel getModelo() {
@@ -87,7 +83,7 @@ public class PanelListarPersonas extends JPanel {
 	
 	public void mostrarMensaje(String mensaje)
 	{
-		JOptionPane.showMessageDialog(null, mensaje);
+		JOptionPane.showMessageDialog(null, mensaje,"Mensaje",1);
 	}
 
 	public String[] getNombreColumnas() {

@@ -1,17 +1,14 @@
 package Presentacion.Vistas;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JMenuItem;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
-import javax.swing.border.EmptyBorder;
+import javax.swing.JMenuItem;
 
 public class VentanaPrincipal extends JFrame {
 
+	private static final long serialVersionUID = 1L;
+	
 	private JMenu mnPersonas;
 	private JMenuBar menuBar;
 	private JMenuItem menuAgregar;
@@ -21,6 +18,7 @@ public class VentanaPrincipal extends JFrame {
 
 	
 	public VentanaPrincipal() {
+		setTitle("Programa");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 501, 370);
 		

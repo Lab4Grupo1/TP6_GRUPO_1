@@ -1,26 +1,24 @@
 package Presentacion.Vistas;
 
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import entidad.Persona;
 
-import java.awt.GridBagLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-
 public class PanelModificarPersona extends JPanel {
+
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField txtDni;
 	private JTextField txtApellido;
 	private JTextField txtNombre;
 	private JButton btnAceptar;
-	private JList list;
+	private JList<Persona> list;
 	private static Persona pAnterior;
 	
 	public Persona getpAnterior() {
@@ -28,14 +26,14 @@ public class PanelModificarPersona extends JPanel {
 	}
 
 	public void setpAnterior(Persona pAnterior) {
-		this.pAnterior = pAnterior;
+		PanelModificarPersona.pAnterior = pAnterior;
 	}
 
-	public JList getList() {
+	public JList<Persona> getList() {
 		return list;
 	}
 
-	public void setList(JList list) {
+	public void setList(JList<Persona> list) {
 		this.list = list;
 	}
 
@@ -82,7 +80,7 @@ public class PanelModificarPersona extends JPanel {
 		btnAceptar.setBounds(159, 246, 102, 23);
 		panel.add(btnAceptar);
 		
-		list = new JList();
+		list = new JList<Persona>();
 		list.setBounds(31, 31, 363, 136);
 		panel.add(list);
 		
@@ -97,7 +95,7 @@ public class PanelModificarPersona extends JPanel {
 	
 	public void mostrarMensaje(String mensaje)
 	{
-		JOptionPane.showMessageDialog(null, mensaje);
+		JOptionPane.showMessageDialog(null, mensaje,"Mensaje",1);
 	}
 	
 	public JTextField getTxtDni() {

@@ -1,12 +1,12 @@
 package Presentacion.Vistas;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
-import javax.swing.JTextField;
-import javax.swing.AbstractButton;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class PanelAgregarPersona extends JPanel {
@@ -71,7 +71,7 @@ public class PanelAgregarPersona extends JPanel {
 
 	public void mostrarMensaje(String mensaje)
 	{
-		JOptionPane.showMessageDialog(null, mensaje);
+		JOptionPane.showMessageDialog(null, mensaje,"Mensaje",1);
 	}
 
 
