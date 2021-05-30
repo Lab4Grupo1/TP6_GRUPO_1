@@ -43,10 +43,7 @@ public class PanelListar extends JPanel {
 		
 		spPersonas.setViewportView(tabPersona);
 		
-		tabPersona.setBounds(20, 25, 403, 179);
-		
-		
-		
+		tabPersona.setBounds(20, 25, 403, 179);		
 		
 //		int numCols = tabPersona.getModel().getColumnCount();
 //		

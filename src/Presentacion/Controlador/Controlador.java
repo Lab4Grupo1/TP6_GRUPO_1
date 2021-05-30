@@ -66,6 +66,7 @@ public class Controlador {
 	public void inicializarTabla() {
 		this.personasEnTabla = (ArrayList<Persona>) pNeg.readAll();
 		this.pnListarPersonas.llenarTabla(personasEnTabla);
+		this.pnModificarPersonas.llenarTabla(personasEnTabla);
 	}
 
 	private void EventoClickMenu_AbrirPanel_ListarPersonas(ActionEvent a) {
@@ -78,7 +79,8 @@ public class Controlador {
 
 	private void EventoClickMenu_AbrirPanel_ModificarPersonas(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
-		ventanaPrincipal.getContentPane().add(pnModificarPersonas);
+		ventanaPrincipal.getContentPane().add(pnModificarPersonas); 
+		inicializarTabla();
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
