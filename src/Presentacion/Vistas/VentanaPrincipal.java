@@ -2,85 +2,98 @@ package Presentacion.Vistas;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.MenuBar;
 
+import javax.swing.JMenuItem;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JMenuBar;
 import javax.swing.JMenu;
-import javax.swing.JMenuItem;
+import javax.swing.JMenuBar;
+import javax.swing.border.EmptyBorder;
 
 public class VentanaPrincipal extends JFrame {
-	
-	
-	private JMenuBar menuBar;
-	private JMenu mnPersonas;
-	private JMenuItem mntmAgregar;
-	private JMenuItem mntmBorrar;
-	private JMenuItem mntmListar;
-	private JMenuItem mntmModificar;
 
+	private JMenu mnPersonas;
+	private JMenuBar menuBar;
+	private JMenuItem menuAgregar;
+	private JMenuItem menuEliminar;
+	private JMenuItem menuModificar;
+	private JMenuItem menuListar;
+
+	
 	public VentanaPrincipal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 450);
+		setBounds(100, 100, 501, 370);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
+
 		
 		mnPersonas = new JMenu("Personas");
 		menuBar.add(mnPersonas);
 		
-		mntmAgregar = new JMenuItem("Agregar");
-		mnPersonas.add(mntmAgregar);
+		menuAgregar = new JMenuItem("Agregar");
+		mnPersonas.add(menuAgregar);
 		
-		mntmBorrar = new JMenuItem("Borrar");
-		mnPersonas.add(mntmBorrar);
+		menuEliminar = new JMenuItem("Eliminar");
+		mnPersonas.add(menuEliminar);
 		
-		mntmListar = new JMenuItem("Listar");
-		mnPersonas.add(mntmListar);
+		menuModificar = new JMenuItem("Modificar");
+		mnPersonas.add(menuModificar);
 		
-		mntmModificar = new JMenuItem("Modificar");
-		mnPersonas.add(mntmModificar);
+		menuListar = new JMenuItem("Listar");
+		mnPersonas.add(menuListar);
+
 	}
+	
+
 	public JMenu getMnPersonas() {
 		return mnPersonas;
 	}
+
 
 	public void setMnPersonas(JMenu mnPersonas) {
 		this.mnPersonas = mnPersonas;
 	}
 
+
 	public JMenuItem getMntmAgregar() {
-		return mntmAgregar;
+		return menuAgregar;
 	}
+
 
 	public void setMntmAgregar(JMenuItem mntmAgregar) {
-		this.mntmAgregar = mntmAgregar;
+		this.menuAgregar = mntmAgregar;
 	}
 
-	public JMenuItem getMntmBorrar() {
-		return mntmBorrar;
+
+	public JMenuItem getMntmEliminar() {
+		return menuEliminar;
 	}
 
-	public void setMntmBorrar(JMenuItem mntmBorrar) {
-		this.mntmBorrar = mntmBorrar;
+
+	public void setMntmEliminar(JMenuItem mntmEliminar) {
+		this.menuEliminar = mntmEliminar;
 	}
 
-	public JMenuItem getMntmListar() {
-		return mntmListar;
-	}
-
-	public void setMntmListar(JMenuItem mntmListar) {
-		this.mntmListar = mntmListar;
-	}
 
 	public JMenuItem getMntmModificar() {
-		return mntmModificar;
+		return menuModificar;
 	}
 
+
 	public void setMntmModificar(JMenuItem mntmModificar) {
-		this.mntmModificar = mntmModificar;
+		this.menuModificar = mntmModificar;
 	}
+
+
+	public JMenuItem getMntmListar() {
+		return menuListar;
+	}
+
+
+	public void setMntmListar(JMenuItem mntmListar) {
+		this.menuListar = mntmListar;
+	}
+
 
 }

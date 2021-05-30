@@ -1,18 +1,20 @@
 package Main;
 
-import javax.swing.JFrame;
-
-import Presentacion.Controlador.Controlador;
-import Presentacion.Vistas.VentanaPrincipal;
+import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 
-public class Principal extends JFrame {
-	
+public class Principal {
+
 	public static void main(String[] args) {
-		VentanaPrincipal principal = new VentanaPrincipal();
-		PersonaNegocioImpl negocio = new PersonaNegocioImpl();
-		Controlador controlador = new Controlador(principal, negocio);
-		controlador.inicializar();
+			
+		try {
+			Presentacion.Vistas.VentanaPrincipal vista = new Presentacion.Vistas.VentanaPrincipal();
+			PersonaNegocio negocio = new PersonaNegocioImpl();
+			Presentacion.Controlador.Controlador controlador = new Presentacion.Controlador.Controlador(vista, negocio);
+			controlador.inicializar();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

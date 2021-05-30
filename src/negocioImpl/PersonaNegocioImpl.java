@@ -2,37 +2,76 @@ package negocioImpl;
 
 import java.util.List;
 
-import dao.PersonaDao;
-import daolmpl.PersonaDaolmpl;
+import javax.swing.DefaultListModel;
+
+import daoImpl.PersonaDaoImpl;
 import entidad.Persona;
 import negocio.PersonaNegocio;
 
-public class PersonaNegocioImpl implements PersonaNegocio {
+public class PersonaNegocioImpl implements PersonaNegocio{
 
-	PersonaDao pdao = new PersonaDaolmpl();
+	PersonaDaoImpl pdao = new PersonaDaoImpl();
+	private boolean estado;
 	
 	@Override
-	public int insert(Persona persona) {
+	public boolean insert(Persona persona) {
 		
-		return pdao.insert(persona);
+		try {
+			
+			if(persona.getNombre().trim().length()>0 && persona.getDni().trim().length()>0 && persona.getApellido().trim().length()>0)
+			{
+				estado=pdao.insert(persona);
+				return estado;
+			}
+			else
+			{
+				return false;
+			}
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return false;
+		}
 	}
 
+	
+	
 	@Override
-	public boolean delete(Persona persona) {
-		// TODO Auto-generated method stub
-		return pdao.delete(persona);
+	public boolean modify(String Dni,Persona persona) {
+		return pdao.modify(Dni, persona);
 	}
 
+
+
 	@Override
-	public boolean modify(Persona persona, Persona personaModif) {
-		// TODO Auto-generated method stub
-		return pdao.modify(persona, personaModif);
+	public boolean delete(Persona persona_a_eliminar) {
+		try {
+			if(persona_a_eliminar.getDni() != null )//Tambi�n se puede preguntar si existe ese ID 
+			{
+				estado=pdao.delete(persona_a_eliminar);
+				return estado;
+			}
+			else
+			{
+				return false;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			return false;
+		}
 	}
 
 	@Override
 	public List<Persona> readAll() {
-		// TODO Auto-generated method stub
 		return pdao.readAll();
 	}
+
+
+	@Override
+	public DefaultListModel<Persona> readAllDFL() {
+		return pdao.readAllDFL();
+	}
+	
+	
 
 }
