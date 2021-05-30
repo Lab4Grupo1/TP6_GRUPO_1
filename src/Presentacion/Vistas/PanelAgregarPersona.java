@@ -62,7 +62,7 @@ public class PanelAgregarPersona extends JPanel {
 		txtDni.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.setBounds(191, 184, 71, 23);
+		btnAceptar.setBounds(191, 184, 86, 23);
 		panel.add(btnAceptar);
 	}
 	

@@ -48,7 +48,7 @@ public class PanelModificarPersona extends JPanel {
 		panel.setLayout(null);
 		
 		JLabel lblUsuario = new JLabel("Seleccione el usuario que desea modificar");
-		lblUsuario.setBounds(103, 6, 216, 14);
+		lblUsuario.setBounds(104, 6, 290, 14);
 		panel.add(lblUsuario);
 		
 		JLabel lblNombre = new JLabel("Nombre");
