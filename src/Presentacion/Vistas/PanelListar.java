@@ -44,19 +44,7 @@ public class PanelListar extends JPanel {
 		spPersonas.setViewportView(tabPersona);
 		
 		tabPersona.setBounds(20, 25, 403, 179);		
-		
-//		int numCols = tabPersona.getModel().getColumnCount();
-//		
-//		PersonaNegocioImpl negocio = new PersonaNegocioImpl();
-//		List<Persona> listaPersona = negocio.readAll();
-//		for (Persona persona : listaPersona) {
-//			
-//		Object [] fila = new Object[numCols]; 
-//		 
-//		 fila[0] = persona.getNombre();
-//		 fila[1] = persona.getApellido();
-//		 fila[2] = persona.getDni();
-//		}
+
 		
 	}
 	

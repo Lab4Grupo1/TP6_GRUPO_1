@@ -1,6 +1,9 @@
 package Presentacion.Controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import Presentacion.Vistas.PanelAgregar;
@@ -37,25 +40,72 @@ public class Controlador {
 		this.ventanaPrincipal.getMntmListar().addActionListener(a->EventoClickMenu_AbrirPanel_ListarPersonas(a));
 		
 		this.pnlIngresoPersonas.getBtnAceptar().addActionListener(a ->EventoClick_PnlAgregarPersona_BtnAceptar(a));
+		this.pnlIngresoPersonas.getTxtDni().addKeyListener((new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                if (((caracter < '0') || (caracter > '9')))
+                {
+                    e.consume();
+                }
+            }
+        }));
+		this.pnlIngresoPersonas.getTxtApellido().addKeyListener((new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                int code = e.getKeyCode();
+                if (!Character.isLetter(caracter) && code!=KeyEvent.VK_BACK_SPACE)
+                {
+                    e.consume();
+                }
+
+                
+            }
+        }));
+		this.pnlIngresoPersonas.getTxtNombre().addKeyListener((new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char caracter = e.getKeyChar();
+                int code = e.getKeyCode();
+                if (!Character.isLetter(caracter) && code!=KeyEvent.VK_BACK_SPACE)
+                {
+                    e.consume();
+                }
+
+            }
+        }));
+		
 	}
 	
 	private void EventoClick_PnlAgregarPersona_BtnAceptar(ActionEvent a) {
+		if(pnlIngresoPersonas.getTxtApellido().getText().isEmpty()) {
+			pnlIngresoPersonas.mostrarMensaje("Por favor, completar el Apellido.");
+		} else if( pnlIngresoPersonas.getTxtDni().getText().isEmpty()) {
+			pnlIngresoPersonas.mostrarMensaje("Por favor, completar el Dni.");
+
+		} else if( pnlIngresoPersonas.getTxtNombre().getText().isEmpty()) {
+			pnlIngresoPersonas.mostrarMensaje("Por favor, completar el Nombre.");
+		}else {
 		String Nombre = this.pnlIngresoPersonas.getTxtNombre().getText();
 		String Apellido = this.pnlIngresoPersonas.getTxtApellido().getText();
 		String Dni = this.pnlIngresoPersonas.getTxtDni().getText();
 		
 		persona = new Persona(Dni,Nombre,Apellido);
 		
-		Boolean exito = pNeg.insert(persona);
-		if(exito) {
+		int exito = pNeg.insert(persona);
+		if(exito == 1) {
 			mensaje = "Persona ingresada con éxito!";
 			this.pnlIngresoPersonas.getTxtApellido().setText("");
 			this.pnlIngresoPersonas.getTxtNombre().setText("");
 			this.pnlIngresoPersonas.getTxtDni().setText("");
+			this.pnlIngresoPersonas.getTxtDni().setBackground(Color.WHITE);
 			this.pnlIngresoPersonas.mostrarMensaje(mensaje);
-		}else {
-			mensaje = "Hubo un error, contacte con el administrador";
+		}else if(exito == 3) {
+			mensaje = "El dni ya existe! por favor indique otro";
+			this.pnlIngresoPersonas.getTxtDni().setBackground(Color.RED);
 			this.pnlIngresoPersonas.mostrarMensaje(mensaje);
+		}else if(exito == -1 || exito == 2) {
+			mensaje = "Hubo un error, por favor, comunicarse con el Admin!";
+			this.pnlIngresoPersonas.mostrarMensaje(mensaje);
+		}
 		}
 	}
 

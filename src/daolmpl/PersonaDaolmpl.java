@@ -16,12 +16,15 @@ public class PersonaDaolmpl implements PersonaDao {
 	private static final String delete = "Delete from personas where Dni = ?";
 	private static final String modify = "Update personas set Dni = ?, Nombre = ?, Apellido = ? where Dni = ?";
 	private static final String readAll = "Select Dni, Nombre, Apellido from personas";
+	private static final String validateDni = "Select * from personas where Dni = ?";
 	
 	@Override
-	public boolean insert(Persona persona) {
+	public int insert(Persona persona) {
+		int Exito = -1;
+		
+		if(validateDni(persona.getDni()) == false) {		
 		PreparedStatement statement;
 		Connection conn = Conexion.getConexion().getSQLConexion();
-		Boolean Exito = false;
 		try {
 			statement = conn.prepareStatement(insert);
 			statement.setString(1, persona.getDni());
@@ -29,24 +32,47 @@ public class PersonaDaolmpl implements PersonaDao {
 			statement.setString(3, persona.getApellido());
 			if(statement.executeUpdate() > 0) {
 				conn.commit();
-				Exito = true;
+				Exito = 1;
 			}else {
-				Exito = false;
+				Exito = 2;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			Exito = false;
+			Exito = -1;
 			try {
 				conn.rollback();
-				Exito = false;
 			} catch (SQLException e1) {
 				e1.printStackTrace();
-				Exito = false;
+				Exito = -1;
 			}
 		}
 		
 		return Exito;
+		}else {
+			Exito = 3;
+			return Exito;
+		}
+		
 	}
+	
+	private boolean validateDni(String dni) {
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		try {
+			statement = conexion.prepareStatement(validateDni);
+			statement.setString(1, dni);
+			ResultSet resultSet;
+			resultSet = statement.executeQuery();
+			while(resultSet.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return false;
+	}
+		
 	
 	@Override
 	public boolean delete(Persona persona) {

@@ -12,7 +12,7 @@ public class PersonaNegocioImpl implements PersonaNegocio {
 	PersonaDao pdao = new PersonaDaolmpl();
 	
 	@Override
-	public boolean insert(Persona persona) {
+	public int insert(Persona persona) {
 		
 		return pdao.insert(persona);
 	}
