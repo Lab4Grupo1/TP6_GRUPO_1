@@ -8,13 +8,15 @@ import entidad.Persona;
 
 import java.util.List;
 
-import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 public class PanelListarPersonas extends JPanel {
 	private DefaultTableModel modelo;
 	private JTable table;
+	private String[] nombreColumnas = {"Nombre y apellido","Telefono"};
+
+
 
 	/**
 	 * Create the panel.
@@ -46,6 +48,10 @@ public class PanelListarPersonas extends JPanel {
 	
 	public void setDefaultListModel(List<Persona> listModelRecibido)
 	{
+		this.getModelo().setRowCount(0); //Para vaciar la tabla
+		this.getModelo().setColumnCount(0);
+		this.getModelo().setColumnIdentifiers(this.getNombreColumnas());
+		
 		int numCols = table.getModel().getColumnCount();
 		
 		for (Persona item : listModelRecibido) {
@@ -63,8 +69,30 @@ public class PanelListarPersonas extends JPanel {
 
 	}
 	
+	public DefaultTableModel getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(DefaultTableModel modelo) {
+		this.modelo = modelo;
+	}
+
+	public JTable getTable() {
+		return table;
+	}
+
+	public void setTable(JTable table) {
+		this.table = table;
+	}
+	
 	public void mostrarMensaje(String mensaje)
 	{
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
+
+	public String[] getNombreColumnas() {
+		return nombreColumnas;
+	}
+
+
 }

@@ -1,5 +1,6 @@
 package Presentacion.Controlador;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -40,6 +41,14 @@ public class Controlador implements ActionListener {
 			this.vp.getMntmModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersona(a));
 			this.vp.getMntmListar().addActionListener(a->EventoClickMenu_AbrirPanel_ListarPersonas(a));
 			
+			//Evento del panel modificar personas en txt dni
+			//Este evento no permite al usuario modificar el dni.
+			this.pmp.getTxtDni().addKeyListener((new KeyAdapter() {
+				public void keyTyped(KeyEvent e) {
+					e.consume();
+				}
+			}));
+			
 			//Evento del panel agregar personas
 			this.pap.getBtnAceptar().addActionListener(a->EventoClickBtn_PanelAgregarPersonas(a));
 			this.pap.getTxtDni().addKeyListener((new KeyAdapter() {
@@ -53,20 +62,20 @@ public class Controlador implements ActionListener {
 	        }));
 			this.pap.getTxtApellido().addKeyListener((new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
-	                char caracter = e.getKeyChar();
-	                if (((caracter < 'a') || (caracter > 'z')))
-	                {
-	                    e.consume();
-	                }
+	            	int code = e.getKeyCode();
+	            	char c = e.getKeyChar();
+	            	if(!Character.isLetter(c) && code!=KeyEvent.VK_BACK_SPACE) {
+	            	    e.consume();  // ignore event
+	            	}
 	            }
 	        }));
 			this.pap.getTxtNombre().addKeyListener((new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
-	                char caracter = e.getKeyChar();
-	                if (((caracter < 'a') || (caracter > 'z')))
-	                {
-	                    e.consume();
-	                }
+	            	int code = e.getKeyCode();
+	            	char c = e.getKeyChar();
+	            	if(!Character.isLetter(c) && code!=KeyEvent.VK_BACK_SPACE) {
+	            	    e.consume();  // ignore event
+	            	}
 	            }
 	        }));
 			
@@ -87,20 +96,20 @@ public class Controlador implements ActionListener {
 	        }));
 			this.pmp.getTxtApellido().addKeyListener((new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
-	                char caracter = e.getKeyChar();
-	                if (((caracter < 'a') || (caracter > 'z')))
-	                {
-	                    e.consume();
-	                }
+	            	int code = e.getKeyCode();
+	            	char c = e.getKeyChar();
+	            	if(!Character.isLetter(c) && code!=KeyEvent.VK_BACK_SPACE) {
+	            	    e.consume();  // ignore event
+	            	}
 	            }
 	        }));
 			this.pmp.getTxtNombre().addKeyListener((new KeyAdapter() {
 	            public void keyTyped(KeyEvent e) {
-	                char caracter = e.getKeyChar();
-	                if (((caracter < 'a') || (caracter > 'z')))
-	                {
-	                    e.consume();
-	                }
+	            	int code = e.getKeyCode();
+	            	char c = e.getKeyChar();
+	            	if(!Character.isLetter(c) && code!=KeyEvent.VK_BACK_SPACE) {
+	            	    e.consume();  // ignore event
+	            	}
 	            }
 	        }));
 			
@@ -156,15 +165,19 @@ public class Controlador implements ActionListener {
 				String Dni = pap.getTxtDni().getText();
 				
 				p = new Persona(Dni,Nombre,Apellido);
-				boolean inserto = pNeg.insert(p);
-				if(inserto == true) {
+				int inserto = pNeg.insert(p);
+				if(inserto == 1) {
 					pap.mostrarMensaje("Persona ingresada con éxito!");
 					
 					pap.getTxtApellido().setText("");
 					pap.getTxtDni().setText("");
+					pap.getTxtDni().setBackground(Color.WHITE);
 					pap.getTxtNombre().setText("");
-				}else {
-					pap.mostrarMensaje("Hubo un error, intente más tarde.");
+				}else if(inserto == 3) {
+					pap.mostrarMensaje("El dni existe, ingrese otro.");
+					pap.getTxtDni().setBackground(Color.RED);
+				}else if(inserto == -1 || inserto == 2) {
+					pap.mostrarMensaje("Hubo un error de conexión, contacte con el administrador");
 				}
 				
 			}

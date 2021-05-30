@@ -1,8 +1,5 @@
-/Main/
 /Presentacion/
-/dao/
 /daoImpl/
-/entidad/
-/mysql-connector-java-8.0.25/
-/negocio/
+/dao/
 /negocioImpl/
+/negocio/

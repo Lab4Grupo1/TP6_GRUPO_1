@@ -21,13 +21,12 @@ public class PersonaDaoImpl implements PersonaDao
 	private static final String update = "UPDATE personas SET dni = ?, nombre = ?, apellido = ? where Dni = ?";
 	private static final String validateDni = "Select * from personas where Dni = ?";
 		
-	public boolean insert(Persona persona)
+	public int insert(Persona persona)
 	{
 		if(validateDni(persona.getDni()) == false) {
 			
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
-		boolean isInsertExitoso = false;
 		try
 		{
 			statement = conexion.prepareStatement(insert);
@@ -37,22 +36,20 @@ public class PersonaDaoImpl implements PersonaDao
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
-				isInsertExitoso = true;
+				return 1;
+			}
+			else {
+				return 2;
 			}
 		} 
 		catch (SQLException e) 
 		{
 			e.printStackTrace();
-			try {
-				conexion.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
+			return -1;
 		}
 		
-		return isInsertExitoso;
 		}else {
-			return false;
+			return 3;
 		}
 		
 	}
@@ -63,16 +60,17 @@ public class PersonaDaoImpl implements PersonaDao
 		try {
 			statement = conexion.prepareStatement(validateDni);
 			statement.setString(1, dni);
-			if(statement.executeUpdate() > 0) {
+			ResultSet resultSet;
+			resultSet = statement.executeQuery();
+			while(resultSet.next())
+			{
 				return true;
-			}
-			else {
-				return false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
+		return false;
 
 	}
 	
